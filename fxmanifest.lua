@@ -5,6 +5,6 @@ lua54 "yes"
 author "Sarbatore"
 
 client_scripts {
-	"events.lua",
+	"config.lua",
 	"client/*.lua",
 }

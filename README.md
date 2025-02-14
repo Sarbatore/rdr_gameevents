@@ -1,6 +1,9 @@
+## Description
+This resource aims to reproduce the functioning of FiveM's "gameEventTriggered" on RedM.
+
 ## Usage:
 ```lua
-exports.srb_events:BindEventHandler(GetCurrentResourceName(), "EVENT_NETWORK_DAMAGE_ENTITY", function(victim, attacker)
-
+AddEventHandler("gameEventTriggered", function(name, args)
+	print("gameEventTriggered", name, json.encode(args))
 end)
 ```
