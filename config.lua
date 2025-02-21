@@ -154,4 +154,12 @@ Config.Events = {
         name = "NetworkHogtieEnd",
         size = 2,
     },
+    [`EVENT_VEHICLE_DESTROYED`] = {
+		name = "VehicleDestroyed",
+		size = 1,
+	},
+	[`EVENT_VEHICLE_CREATED`] = {
+		name = "VehicleCreated",
+		size = 1,
+	},
 }
