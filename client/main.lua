@@ -2,6 +2,10 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 
+		if (not IsPlayerPlaying(PlayerId())) then
+			goto continue
+		end
+
 		for eventTypeIndex = 0, 4 do
 			local eventsNumber = GetNumberOfEvents(eventTypeIndex)
 			if (eventsNumber > 0) then
@@ -28,5 +32,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+
+		::continue::
 	end
 end)

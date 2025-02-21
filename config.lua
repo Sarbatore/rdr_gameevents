@@ -50,6 +50,14 @@ Config.Events = {
         name = "ChallengeGoalUpdate",
         size = 1,
     },
+    [`EVENT_CHALLENGE_GOAL_COMPLETE`] = {
+        name = "ChallengeGoalComplete",
+        size = 1,
+    },
+    [`EVENT_CHALLENGE_REWARD`] = {
+        name = "ChallengeReward",
+        size = 1,
+    },
     [`EVENT_ENTITY_DESTROYED`] = {
         name = "EntityDestroyed",
         size = 10,
