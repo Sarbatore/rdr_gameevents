@@ -195,7 +195,7 @@ Citizen.CreateThread(function()
 							TriggerEvent("gameEventTriggered", eventTable.name, eventArgs)
 						end
 					else
-						print("Event", eventHash, "not found")
+						--print("Event", eventHash, "not found")
 					end
 				end
 			end
