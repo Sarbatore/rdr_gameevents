@@ -174,7 +174,7 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 
-		for eventTypeIndex = 0, 4 do
+		for eventTypeIndex = 0, 1 do
 			local eventsNumber = GetNumberOfEvents(eventTypeIndex)
 			if (eventsNumber > 0) then
 				for eventIndex = 0, eventsNumber - 1 do
