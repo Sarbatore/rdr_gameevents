@@ -192,6 +192,8 @@ Citizen.CreateThread(function()
 								table.insert(eventArgs, eventDataStruct:GetInt32(i * 8))
 							end
 
+                            --print(eventTable.name, json.encode(eventArgs))
+
 							TriggerEvent("gameEventTriggered", eventTable.name, eventArgs)
 						end
 					else
@@ -200,5 +202,41 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+	end
+end)
+
+local Uiapps = {
+    `hud_quick_select`,
+    `warning_feed`,
+    `status_alert_feed`,
+    `EMOTES_CHANNEL`,
+    `fast_travel_menu`,
+    `MAIN_LOBBY_HOST`,
+    `crafting_menu`,
+    `UI_EVENT_CHANNEL_EXIT_GAME`,
+    `UI_EVENT_CHANNEL_ROLE_PROGRESSION`,
+    `UI_EVENT_CHANNEL_REWARDS`,
+}
+
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(0)
+
+        for _, uiapp in ipairs(Uiapps) do
+            while EventsUiIsPending(uiapp) do
+                local uiMessage = DataView.ArrayBuffer(4 * 8)
+                if (Citizen.InvokeNative(0x90237103F27F7937, uiapp, uiMessage:Buffer()) ~= 0) then -- EVENTS_UI_PEEK_MESSAGE
+                    local eventArgs = {uiapp}
+                    for i = 0, 3 do
+                        table.insert(eventArgs, uiMessage:GetInt32(i * 8))
+                    end
+                    
+                    TriggerEvent("gameEventTriggered", "UiappMessage", eventArgs)
+                end
+    
+                EventsUiPopMessage(uiapp)
+            end
+            Citizen.Wait(0)
+        end
 	end
 end)
