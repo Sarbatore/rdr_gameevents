@@ -7,7 +7,7 @@ local Events = {
     [`EVENT_CARRIABLE_VEHICLE_STOW_START`] = {name = "EventCarriableVehicleStowStart", size = 5},
     [`EVENT_CARRIABLE_VEHICLE_STOW_COMPLETE`] = {name = "EventCarriableVehicleStowComplete", size = 3},
     [`EVENT_CHALLENGE_GOAL_COMPLETE`] = {name = "EventChallengeGoalComplete", size = 1},
-    [`EVENT_CHALLENGE_GOAL_UPDATE`] = {name = "EventChallengeGoalUpdate", size = 1},
+    --[`EVENT_CHALLENGE_GOAL_UPDATE`] = {name = "EventChallengeGoalUpdate", size = 1}, -- Avoid spam
     [`EVENT_CHALLENGE_REWARD`] = {name = "EventChallengeReward", size = 3},
     [`EVENT_CONTAINER_INTERACTION`] = {name = "EventContainerInteraction", size = 4},
     [`EVENT_CRIME_CONFIRMED`] = {name = "EventCrimeConfirmed", size = 3},
