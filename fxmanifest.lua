@@ -4,9 +4,10 @@ rdr3_warning "I acknowledge that this is a prerelease build of RedM, and I am aw
 lua54 "yes"
 
 author "Sarbatore"
-description "Game events for RedM"
+description "Game events handler for RedM"
+version "1.1"
 
 client_scripts {
-	"@vorp_core/client/dataview.lua", -- Your dataview path
-	"client.lua",
+	"lib/dataview.lua",
+	"client/main.lua",
 }
