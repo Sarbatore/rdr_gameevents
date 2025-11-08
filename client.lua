@@ -12,7 +12,15 @@ CreateThread(function()
                             if (Citizen.InvokeNative(0x57EC5FA4D4D6AFCA, eventType, eventIndex, eventData:Buffer(), event.size)) then -- GET_EVENT_DATA
                                 local eventArgs = {}
                                 for i = 0, event.size - 1 do
-                                    table.insert(eventArgs, eventData:GetInt32(i*8))
+                                    local v = 0
+                                    if (event.outputs and event.outputs[i] == "float") then
+                                        v = eventData:GetFloat32(i*8)
+                                    elseif (event.outputs and event.outputs[i] == "boolean") then
+                                        v = eventData:GetFloat32(i*8) == 1
+                                    else
+                                        v = eventData:GetInt32(i*8)
+                                    end
+                                    table.insert(eventArgs, v)
                                 end
 
                                 TriggerEvent("gameEventTriggered", event.name, eventArgs)
