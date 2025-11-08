@@ -1,4 +1,16 @@
-local Events = {
+Config = {}
+
+Config.Debug = false
+
+Config.DisabledEvents = {
+    [`EVENT_CHALLENGE_GOAL_UPDATE`] = true,
+    [`EVENT_PED_CREATED`] = true,
+    [`EVENT_PED_DESTROYED`] = true,
+    [`EVENT_VEHICLE_CREATED`] = true,
+    [`EVENT_VEHICLE_DESTROYED`] = true,
+}
+
+Config.Events = {
     [`EVENT_BUCKED_OFF`] = {name = "EventBuckedOff", size = 3},
     [`EVENT_CALCULATE_LOOT`] = {name = "EventCalculateLoot", size = 26},
     [`EVENT_CALM_PED`] = {name = "EventCalmPed", size = 4},
@@ -7,7 +19,7 @@ local Events = {
     [`EVENT_CARRIABLE_VEHICLE_STOW_START`] = {name = "EventCarriableVehicleStowStart", size = 5},
     [`EVENT_CARRIABLE_VEHICLE_STOW_COMPLETE`] = {name = "EventCarriableVehicleStowComplete", size = 3},
     [`EVENT_CHALLENGE_GOAL_COMPLETE`] = {name = "EventChallengeGoalComplete", size = 1},
-    --[`EVENT_CHALLENGE_GOAL_UPDATE`] = {name = "EventChallengeGoalUpdate", size = 1}, -- Avoid spam
+    [`EVENT_CHALLENGE_GOAL_UPDATE`] = {name = "EventChallengeGoalUpdate", size = 1},
     [`EVENT_CHALLENGE_REWARD`] = {name = "EventChallengeReward", size = 3},
     [`EVENT_CONTAINER_INTERACTION`] = {name = "EventContainerInteraction", size = 4},
     [`EVENT_CRIME_CONFIRMED`] = {name = "EventCrimeConfirmed", size = 3},
@@ -119,39 +131,3 @@ local Events = {
     [`EVENT_VEHICLE_CREATED`] = {name = "EventVehicleCreated", size = 1},
     [`EVENT_VEHICLE_DESTROYED`] = {name = "EventVehicleDestroyed", size = 1},
 }
-
-CreateThread(function()
-	while true do
-		for eventType = 0, 1 do
-			local eventsNumber = GetNumberOfEvents(eventType)
-			if (eventsNumber > 0) then
-				for eventIndex = 0, eventsNumber - 1 do
-					local eventHash = GetEventAtIndex(eventType, eventIndex)
-					local eventTable = Events[eventHash]
-					if (eventTable) then
-						local eventDataStruct = DataView.ArrayBuffer(eventTable.size * 8)
-						for i = 0, eventTable.size - 1 do
-							eventDataStruct:SetInt32(i * 8, 0)
-						end
-
-						if (Citizen.InvokeNative(0x57EC5FA4D4D6AFCA, eventType, eventIndex, eventDataStruct:Buffer(), eventTable.size)) then -- GET_EVENT_DATA
-							local eventArgs = {}
-							for i = 0, eventTable.size - 1 do
-								table.insert(eventArgs, eventDataStruct:GetInt32(i * 8))
-							end
-
-                            --print(eventTable.name, json.encode(eventArgs))
-
-							TriggerEvent("gameEventTriggered", eventTable.name, eventArgs)
-                        else
-                            print("Invalid event data for", eventTable.name, "with hash", eventHash)
-						end
-					else
-						print("Event", eventHash, "not registered")
-					end
-				end
-			end
-		end
-        Wait(0)
-	end
-end)

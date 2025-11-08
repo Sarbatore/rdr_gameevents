@@ -9,5 +9,6 @@ version "1.1"
 
 client_scripts {
 	"lib/dataview.lua",
-	"client/main.lua",
+	"config.lua",
+	"client.lua"
 }
