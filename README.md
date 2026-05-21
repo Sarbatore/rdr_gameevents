@@ -26,7 +26,7 @@ end)
 | CEventCalculateLoot | ```{a1: any, a2: any, a3: any, a4: any, a5: any, a6: any, a7: any, a8: any, a9: any, a10: any, a11: any, a12: any, a13: any, a14: any, a15: any, a16: any, a17: any, a18: any, a19: any, a20: any, a21: any, a22: any, a23: any, a24: any, a25: any, a26: any}``` |
 | CEventCalmPed | ```{a1: any, a2: any, a3: any, a4: any}``` |
 | CEventCarriablePromptInfoRequest | ```{a1: any, a2: any, a3: any, a4: any, a5: any, a6: any}``` |
-| CEventCarriableUpdateCarryState | ```{a1: any, a2: any, a3: any, a4: any, a5: any}``` |
+| CEventCarriableUpdateCarryState | ```{a1: carriedEntity, a2: instigatorPed, a3: carrierPed, a4: any, a5: isDropped}``` |
 | CEventCarriableVehicleStowComplete | ```{a1: any, a2: any, a3: any}``` |
 | CEventCarriableVehicleStowStart | ```{a1: any, a2: any, a3: any, a4: any, a5: any}``` |
 | CEventChallengeGoalComplete | ```{a1: any}``` |
@@ -39,7 +39,7 @@ end)
 | CEventEntityDamaged | ```{a1: destroyedEntity, a2: destroyerEntity, a3: weaponHash, a4: ammoHash, a5: any, a6: any, a7: any, a8: any, a9: any}``` |
 | CEventEntityDestroyed | ```{a1: destroyedEntity, a2: destroyerEntity, a3: weaponHash, a4: ammoHash, a5: any, a6: any, a7: any, a8: any, a9: any}``` |
 | CEventEntityDisarmed | ```{a1: any, a2: any, a3: any, a4: any}``` |
-| CEventEntityExplosion | ```{a1: any, a2: any, a3: any, a4: any, a5: any, a6: any}``` |
+| CEventEntityExplosion | ```{a1: instigator, a2: any, a3: any, a4: x, a5: y, a6: z}``` |
 | CEventEntityHogtied | ```{a1: any, a2: any, a3: any}``` |
 | CEventHeadshotBlockedByHat | ```{a1: any, a2: any}``` |
 | CEventHelpTextRequest | ```{a1: any, a2: any, a3: any, a4: any}``` |
@@ -58,7 +58,7 @@ end)
 | CEventMountOverspurred | ```{a1: any, a2: any, a3: any, a4: any, a5: any, a6: any}``` |
 | CEventNetworkAwardClaimed | ```{a1: any, a2: any, a3: any, a4: any, a5: any, a6: any, a7: any, a8: any, a9: any, a10: any, a11: any, a12: any}``` |
 | CEventNetworkBountyRequestComplete | ```{a1: any, a2: any, a3: any, a4: any, a5: any, a6: any, a7: any}``` |
-| CEventNetworkBulletImpactedMultiplePeds | ```{a1: any, a2: any, a3: any, a4: any}``` |
+| CEventNetworkBulletImpactedMultiplePeds | ```{a1: instigatorPed, a2: any, a3: any, a4: any}``` |
 | CEventNetworkCashInventoryTransaction | ```{a1: any, a2: any, a3: any, a4: any, a5: any, a6: any}``` |
 | CEventNetworkCrewCreation | ```{a1: any, a2: any, a3: any, a4: any, a5: any, a6: any, a7: any, a8: any, a9: any, a10: any}``` |
 | CEventNetworkCrewDisbanded | ```{a1: any, a2: any}``` |
@@ -118,7 +118,7 @@ end)
 | CEventPedDestroyed | ```{a1: ped}``` |
 | CEventPedHatKnockedOff | ```{a1: ped, a2: hatObject}``` |
 | CEventPedWhistle | ```{a1: any, a2: any}``` |
-| CEventPickupCarriable | ```{a1: any, a2: any, a3: any, a4: any}``` |
+| CEventPickupCarriable | ```{a1: carrierPed, a2: carriedEntity, a3: any, a4: any}``` |
 | CEventPlaceCarriableOntoParent | ```{a1: any, a2: any, a3: any, a4: any, a5: any, a6: any}``` |
 | CEventPlayerCollectedAmbientPickup | ```{a1: any, a2: any, a3: any, a4: any, a5: any, a6: any, a7: any, a8: any}``` |
 | CEventPlayerEscalatedPed | ```{a1: any, a2: any}``` |

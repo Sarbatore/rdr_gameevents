@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Debug = true -- Enable debug prints
+Config.Debug = false -- Enable debug prints
 
 Config.DisabledEvents = { -- Some events can be very spammy, so you can disable them here for CPU optimization.
     [`EVENT_CHALLENGE_GOAL_UPDATE`] = true,
@@ -20,7 +20,6 @@ Config.Events = {
         name = "CEventCarriableUpdateCarryState",
         size = 5,
         args = {
-            [3] = "boolean",
             [4] = "boolean",
         }
     },
@@ -126,14 +125,7 @@ Config.Events = {
         name = "CEventNetworkDamageEntity",
         size = 32,
         args = {
-            [3] = "boolean",
-            [4] = "boolean",
-            [10] = "boolean",
-            [11] = "boolean",
-            [12] = "boolean",
-            [13] = "boolean",
-            [25] = "boolean",
-            [31] = "boolean",
+            
         }
     },
     [`EVENT_NETWORK_GANG`] = {name = "CEventNetworkGang", size = 18},
@@ -232,10 +224,7 @@ Config.Events = {
     [`EVENT_PED_WHISTLE`] = {name = "CEventPedWhistle", size = 2},
     [`EVENT_PICKUP_CARRIABLE`] = {
         name = "CEventPickupCarriable",
-        size = 4,
-        args = {
-            [2] = "boolean"
-        }
+        size = 4
     },
     [`EVENT_PLACE_CARRIABLE_ONTO_PARENT`] = {
         name = "CEventPlaceCarriableOntoParent",
