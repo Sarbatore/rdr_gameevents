@@ -4,10 +4,16 @@ rdr3_warning "I acknowledge that this is a prerelease build of RedM, and I am aw
 lua54 "yes"
 
 author "Sarbatore"
-description "Game events handler for RedM"
-version "1.1"
+description "gameEventTriggered event for RedM, allowing you to listen to native game events with their arguments like FiveM."
+version "1.2.0"
 
 client_scripts {
+	"lib/dataview.lua",
+	"config.lua",
+	"client.lua"
+}
+
+escrow_ignore {
 	"lib/dataview.lua",
 	"config.lua",
 	"client.lua"
