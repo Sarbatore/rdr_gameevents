@@ -8,7 +8,7 @@ end
 
 CreateThread(function()
 	while true do
-		for eventType = 0, 1 do
+		for eventType = 0, 4 do
 			local numberOfEvents = GetNumberOfEvents(eventType)
 			if (numberOfEvents > 0) then
 				for eventIndex = 0, numberOfEvents - 1 do
@@ -16,10 +16,11 @@ CreateThread(function()
                     if (not Config.DisabledEvents[eventHash]) then
                         local event = Config.Events[eventHash]
                         if (event) then
-                            local eventData = DataView.ArrayBuffer(event.size*8)
-                            if (Citizen.InvokeNative(0x57EC5FA4D4D6AFCA, eventType, eventIndex, eventData:Buffer(), event.size or 64)) then -- GET_EVENT_DATA
+                            local eventSize = event.size or 64
+                            local eventData = DataView.ArrayBuffer(eventSize*8)
+                            if (Citizen.InvokeNative(0x57EC5FA4D4D6AFCA, eventType, eventIndex, eventData:Buffer(), eventSize)) then -- GET_EVENT_DATA
                                 local eventArgs = {}
-                                for i = 0, event.size - 1 do
+                                for i = 0, eventSize - 1 do
                                     local argType = event.args and event.args[i] or "int32"
                                     local arg = nil
                                     if (argType == "int32") then
