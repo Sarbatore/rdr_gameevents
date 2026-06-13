@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Debug = true -- Enable debug prints
+Config.Debug = false -- Enable debug prints
 
 Config.DisabledEvents = { -- Some events can be very spammy, so you can disable them here for CPU optimization.
     [`EVENT_CHALLENGE_GOAL_UPDATE`] = true,
